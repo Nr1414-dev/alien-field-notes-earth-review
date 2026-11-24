@@ -13,6 +13,10 @@ OUTPUT_PATH = "/output/entry.txt"
 
 
 def main():
+    if not LINE.strip():
+        raise ValueError("entry line must not be blank")
+    if len(LINE) > 200:
+        raise ValueError("entry line must be at most 200 characters")
     os.makedirs("/output", exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as handle:
         handle.write(LINE)
